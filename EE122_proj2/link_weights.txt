@@ -1,0 +1,26 @@
+1. link latencies
+An interactive teleconferencing session may want to have the packets sent with links of the lowest latencies possible.
+
+2. miss rate
+On-line banking may want to have the packets sent with links of the lowest miss rate possible. Therefore, when there is a transaction, the important information won't get lost and cause the update to be wrong.
+
+So we have three metrics, the lowest hop count, the lowest link latencies and the lowest miss rate.
+                              L1
+                      miss rate: 20%, link latency:15 msecs
+                         h1---------r1
+                          | \        |      
+                          |  \       |               
+                          |   \ L5   |
+          L4              |    \     | L2
+    link latency:40 msecs |     \    |miss rate: 30%  
+    miss rate: 5%         |      \   |link latency: 20 msecs     
+                          |       \  |        
+                          |        \ |          
+                         r2---------h2
+                             miss rate: 5%
+                             link latency:25 msecs
+                               L3
+
+    The link directly connecting h1 and h2 have miss rate equal to 99% and link latency equal to 99 msecs. 
+     
+    So according to the lowest hop count, h1 should send packet to h2 through L5;according to the lowest miss rate, h1 should send packet to h2 through L4 and L3;according to the lowest link latency,h1 should send packet to h2 through L1 and L2.
